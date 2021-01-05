@@ -1,0 +1,95 @@
+#include<stdio.h>
+#include<conio.h>
+#define size 5
+int qu[size],front=-1,rear=-1;
+
+int full()
+{
+if(front==size-1)
+ return 1;
+else
+ return 0;
+}
+
+int empty()
+{
+if(front==-1)
+ return 1;
+else
+ return 0;
+}
+
+void enQ(int el)
+{
+if(full())
+ printf("\"Queue is full\n");
+else
+{
+if(front==-1)
+ front=0;
+rear=(rear+1)%size;
+qu[rear]=el;
+}}
+
+int deQ()
+{
+int el;
+if(empty())
+{
+printf("\nQueue empty\n");
+return (-1);
+}
+else
+{
+el=qu[front];
+if(front==rear)
+{
+front=-1;
+rear=-1;
+}
+else
+ front=(front+1)%size;
+printf("\ndeleted %d\n",el);
+return(el);
+}}
+
+void dis()
+{
+int i;
+if(empty())
+ printf("\nqueue empty]\n");
+else
+{
+printf("\nfront %d",front);
+printf("\nitem\t");
+for(i=front;i!=rear;i=(i+1)%size)
+{
+printf("%d",qu[i]);
+}
+printf("%d",qu[i]);
+printf("\nrear %d\n",rear);
+}}
+
+int fron()
+{
+int el;
+if(empty())
+ printf("\nunderflow\n");
+el=qu[front];
+printf("%d\n",el);
+return el;
+}
+
+int main()
+{
+
+enQ(1);
+enQ(2);
+enQ(3);
+fron();
+dis();
+deQ();
+dis();
+getch();
+return 0;
+}

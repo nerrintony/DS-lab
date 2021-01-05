@@ -1,0 +1,139 @@
+#include<stdio.h>
+#include<conio.h>
+#define size 5
+int fron=-1,rea=-1;
+int in();
+int full();
+int empty();
+int de();
+int front();
+void dis();
+int rear();
+int qu[size];
+
+int main()
+{
+int ch;
+clrscr();
+while(1)
+{
+printf("\n1.Insert\n2.delete\n3.display\n4.front ele\n5.rear ele\n6.exit\n");
+scanf("\n%d",&ch);
+switch(ch)
+{
+case 1:
+	in();
+	break;
+case 2:
+	de();
+	break;
+case 3:
+	dis();
+	break;
+case 4:
+	front();
+	break;
+case 5:
+	rear();
+	break;
+case 6:
+	exit(1);
+	break;
+default:
+	printf("\nInvalid\n");
+	break;
+}
+}
+}
+
+int full()
+{
+if(fron==size-1)
+ return 1;
+else
+ return 0;
+}
+
+int empty()
+{
+if(fron==-1)
+ return 1;
+else
+ return 0;
+}
+
+int in()
+{
+int it;
+if(full())
+{
+printf("\nOverflow\n");
+return 1;
+}
+printf("\nenter the  element\n");
+scanf("%d\n",&it);
+if(fron==-1)
+ fron=0;
+else
+ rea++;
+qu[rea]=it;
+return 1;
+}
+
+int de()
+{
+int it;
+if(empty())
+{
+printf("\nUnderflow\n");
+}
+else
+{
+it=qu[fron];
+if(fron==rea)
+{
+fron=-1;
+rea=-1;
+}
+else
+ fron++;
+printf("\ndeleted\n");
+}
+return it;
+}
+
+void dis()
+{
+int i;
+if(empty())
+{
+printf("\nunderflow\n");
+return;
+}
+else
+{
+for(i=fron;i<=rea;i++)
+ printf("%d\t",qu[i]);
+}
+}
+
+
+int front()
+{
+int it;
+if(empty())
+ printf("\nunderflow\n");
+it=qu[fron];
+printf("\n%d\t",it);
+return it;
+}
+
+int rear()
+{
+int it;
+if(full())
+printf("\noverflow\n");
+it=qu[rea];
+printf("%d\t",it);
+return it;
+}
